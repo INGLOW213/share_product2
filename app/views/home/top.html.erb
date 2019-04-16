@@ -1,13 +1,10 @@
-<h1>Home#top</h1>
-<p>Find me in app/views/home/top.html.erb</p>
-
-<button type="button" class="btn btn-primary">Primary</button>
-<button type="button" class="btn btn-secondary">Secondary</button>
-<button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-info">Info</button>
-<button type="button" class="btn btn-light">Light</button>
-<button type="button" class="btn btn-dark">Dark</button>
-
-<button type="button" class="btn btn-link">Link</button>
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6 text-center">
+            <br><br><br><br>
+            <%= link_to("大学の方はこちら","/colleges/sign_up", class: "btn btn-primary") %>
+            
+            <%= link_to("企業の方はこちら","/companies/sign_up", class: "btn btn-primary") %>
+        </div>
+    </div>
+</div>
