@@ -42,6 +42,13 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find_by(id: params[:id])
   end
+  
+  def destroy
+    @product = Product.find_by(id: params[:id])
+    @product.destroy
+    flash[:warning] = "削除しました"
+    redirect_to("/products/index")
+  end
 
   def all_destroy
     @products = Product.all
