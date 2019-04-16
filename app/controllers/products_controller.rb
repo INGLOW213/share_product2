@@ -1,0 +1,54 @@
+class ProductsController < ApplicationController
+  protect_from_forgery except: :create
+  def index
+    @products = Product.all
+  end
+
+  def new
+  end
+
+  def create
+    @product = Product.new(title: params[:title], content: params[:content],price: params[:price].to_i)
+    @product.save
+
+    if @product.save
+      flash[:success] = "投稿しました"
+      redirect_to("/products/index")
+    else
+      flash.now[:danger] = "投稿に失敗しました"
+      render("/products/new")
+    end
+  end
+  
+  def edit
+    @product = Product.find_by(id: params[:id])
+  end
+  
+  def update
+    @product = Product.find_by(id: params[:id])
+    @product.title = params[:title]
+    @product.content = params[:content]
+    @product.price = params[:price].to_i
+    @product.save
+    if @product.save
+      flash[:success] = "保存しました"
+      redirect_to("/products/#{@product.id}")
+    else
+      flash.now[:danger] = "保存できませんでした"
+      render("/product/#{@product.id}/edit")
+    end
+  end
+  
+  def show
+    @product = Product.find_by(id: params[:id])
+  end
+
+  def all_destroy
+    @products = Product.all
+    @products.each do |product|
+      product.destroy
+    end
+    flash[:warning] = "すべて削除しました"
+    redirect_to("/products/index")
+  end
+end
