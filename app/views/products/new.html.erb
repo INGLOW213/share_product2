@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="offset-md-2 col-md-8">
+            <br>
+            <h2>新規プロダクト作成</h2>
+            <%= form_tag("create",{method: "post"}) do %>
+                <br><br><br>
+                <p>タイトル</p>
+                <input type="text" name="title" class="form-control">
+                <br>
+                <p>値段</p>
+                <input type="text" name="price" class="form-control">
+                <br>
+                <p>本文</p>
+                <textarea name="content" class="form-control" rows="30"></textarea>
+                <br>
+                <input type="submit" class="btn btn-primary" value="送信">
+            <%end%>
+        </div>
+    </div>
+</div>
