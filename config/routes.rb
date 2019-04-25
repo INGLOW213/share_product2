@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  root 'home#top'
+  
   devise_for :companies
   devise_for :colleges
   get 'home/top'
