@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_college! ,only: [:show, :new, :create ,:update, :destroy, :edit]
   protect_from_forgery except: :create
   def index
     @products = Product.all
@@ -12,7 +13,7 @@ class ProductsController < ApplicationController
 
   def create
     # @product = Product.new(title: params[:title], content: params[:content],price: params[:price].to_i)
-    @product = Product.new(product_params)
+    @product = current_college.products.new(product_params)
     # @product.save
 
     if @product.save
