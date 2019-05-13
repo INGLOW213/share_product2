@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   
   devise_for :companies
   devise_for :colleges
+
   get 'home/top'
   
+
   # get 'products/index'
   # get 'products/new'
   # post 'products/create'
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
   resources :products do
     resources :pictures, only: [:create]
   end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
 end
