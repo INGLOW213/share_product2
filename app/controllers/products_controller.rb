@@ -5,15 +5,19 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
+    # 3.times { @product.pictures.build }
+    @product.pictures.build
   end
 
   def create
-    @product = Product.new(title: params[:title], content: params[:content],price: params[:price].to_i)
-    @product.save
+    # @product = Product.new(title: params[:title], content: params[:content],price: params[:price].to_i)
+    @product = Product.new(product_params)
+    # @product.save
 
     if @product.save
       flash[:success] = "投稿しました"
-      redirect_to("/products/index")
+      redirect_to products_path
     else
       flash.now[:danger] = "投稿に失敗しました"
       render("/products/new")
@@ -58,4 +62,12 @@ class ProductsController < ApplicationController
     flash[:warning] = "すべて削除しました"
     redirect_to("/products/index")
   end
+  
+  private
+    
+    def product_params
+      params.require(:product).permit(:title, :content, :price, {image_url: []})
+    end
+  
+  
 end

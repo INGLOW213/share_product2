@@ -5,7 +5,7 @@
             <h2><%= @product.title %></h2>
             <p class="text-danger">￥<%= @product.price %></p>
             <%= link_to("編集","/products/#{@product.id}/edit") %>
-            <%= link_to("削除","/products/#{@product.id}/destroy",{method: "post"}) %>
+            <%= link_to("削除","/products/#{@product.id}/destroy",{method: "delete"}) %>
             <br><br>
             <p><%= @product.content %></p>
         </div>
