@@ -1,0 +1,18 @@
+<div class="nav-item">
+  <%= link_to("マイページ", company_path(current_company.id) ,class: "nav-link") %>
+</div>
+<!--ナビバー右寄せ-->
+<div class="navbar-right">
+  <li class="nav-item">
+    <div class="dropdown">
+    	<button class="dropdown-toggle" type="button" data-toggle="dropdown">
+    		<%= image_tag avater_url(current_company),class: 'text-center img-circle small-user-img'%>
+    		<span class="caret"></span>
+    	</button>
+    	<ul class="dropdown-menu" role="menu">
+    	  <%= link_to("マイページ", company_path(current_company.id) ,class: "nav-link") %>
+    	  <%= link_to 'サインアウト',destroy_company_session_path, method: :delete, class: "nav-link" %>
+    	</ul>
+    </div>
+  </li>
+</div>

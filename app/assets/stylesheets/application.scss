@@ -15,3 +15,31 @@
  */
 
 @import "bootstrap";
+
+.small-user-img{
+  width: 40%;
+}
+.dropdown-toggle{
+  float: right;
+  background-color: #343a40;
+  margin: 0;
+  padding: 0;
+  border: 2px solid #343a40;
+}
+.navbar-right .nav-item{
+  position: absolute;
+  right: 0;
+}
+.dropdown-toggle::after{
+  color: #fff;
+}
+.navbar-dark .navbar-nav .show > .nav-link{
+  color: #000;
+}
+.navbar-right .nav-link{
+  border-bottom: 0.5px solid #ddd;
+}
+.dropdown-menu{
+  position: absolute;
+  top: 40px;
+}

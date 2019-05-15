@@ -1,0 +1,13 @@
+<% products.each do |product| %>
+                
+  <%=link_to  product_path(product.id) do %>
+      <div class="card">
+          <div class="card-body">
+              <h2 class="card-title"><%= product.title %></h2>
+              <p class="card-text"><%= product.content %></p>
+              <p class="card-text">￥<%= product.price %></p>
+          </div>
+      </div>
+  <% end %>
+
+<%end%>
