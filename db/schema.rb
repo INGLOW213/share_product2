@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_15_073411) do
+
+ActiveRecord::Schema.define(version: 2019_05_15_074143) do
+
 
   create_table "colleges", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -20,8 +22,10 @@ ActiveRecord::Schema.define(version: 2019_05_15_073411) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name", default: "", null: false
+
     t.string "college_image"
+    t.string "name", default: "", null: false
+
     t.index ["email"], name: "index_colleges_on_email", unique: true
     t.index ["reset_password_token"], name: "index_colleges_on_reset_password_token", unique: true
   end
@@ -69,6 +73,16 @@ ActiveRecord::Schema.define(version: 2019_05_15_073411) do
     t.datetime "updated_at", null: false
     t.integer "college_id"
     t.index ["college_id"], name: "index_products_on_college_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "college_id"
+    t.integer "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["college_id", "company_id"], name: "index_relationships_on_college_id_and_company_id", unique: true
+    t.index ["college_id"], name: "index_relationships_on_college_id"
+    t.index ["company_id"], name: "index_relationships_on_company_id"
   end
 
   create_table "reviews", force: :cascade do |t|

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  get 'relationship/create'
+  get 'relationship/destroy'
+  get 'create/destroy'
   root 'home#top'
   
   devise_for :companies
@@ -23,6 +26,8 @@ Rails.application.routes.draw do
   resources :products do
     resources :pictures, only: [:create]
   end
+  
+  resources :relationships, only: [:create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
