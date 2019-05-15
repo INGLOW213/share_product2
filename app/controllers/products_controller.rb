@@ -31,16 +31,16 @@ class ProductsController < ApplicationController
   
   def update
     @product = Product.find_by(id: params[:id])
-    @product.title = params[:title]
-    @product.content = params[:content]
-    @product.price = params[:price].to_i
-    @product.save
-    if @product.save
+    # @product.title = params[:title]
+    # @product.content = params[:content]
+    # @product.price = params[:price].to_i
+    # @product.save
+    if @product.update(product_params)
       flash[:success] = "保存しました"
-      redirect_to("/products/#{@product.id}")
+      redirect_to products_path
     else
       flash.now[:danger] = "保存できませんでした"
-      render("/product/#{@product.id}/edit")
+      render :edit
     end
   end
   
