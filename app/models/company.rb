@@ -3,4 +3,18 @@ class Company < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :relationships
+  has_many :followings , through: :relationships
+ 
+  
+  def follow(other_college)
+    unless self == other_college
+      self.relationships.find_or_create_by(college_id: other_college.id)
+    end
+  end
+  
+  def unfollow(other_college)
+    relationship = self.relationship.find_by(college_id: other_college.id)
+    self.relationships.destroy if relationship
+  end
 end
