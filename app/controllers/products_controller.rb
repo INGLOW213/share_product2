@@ -12,9 +12,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    # @product = Product.new(title: params[:title], content: params[:content],price: params[:price].to_i)
     @product = current_college.products.new(product_params)
-    # @product.save
 
     if @product.save
       flash[:success] = "投稿しました"

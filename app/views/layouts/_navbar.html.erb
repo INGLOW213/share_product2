@@ -7,9 +7,11 @@
 		<div class="collapse navbar-collapse">
 				<ul class="navbar-nav">
 					<% if college_signed_in? %>
-						<%= render "layouts/after_navbar", college: @college %>
+						<%= render "layouts/college_navbar", college: @college %>
+					<% elsif company_signed_in? %>
+						<%= render "layouts/company_navbar", company: @company %>
 					<% else %>
-						<%= render "layouts/before_navbar" %>
+						<%= render "layouts/before_navbar"%>
 					<% end %>
 				</ul>
 		</div>
