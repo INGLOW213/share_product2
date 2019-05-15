@@ -3,26 +3,10 @@
         <div class="offset-md-2 col-md-8">
             <br>
             <h2>新規プロダクト作成</h2>
-            <% if false %>
-              <%= form_tag("create",{method: "post"}) do %>
-                  <br><br><br>
-                  <p>タイトル</p>
-                  <input type="text" name="title" class="form-control">
-                  <br>
-                  <p>値段</p>
-                  <input type="text" name="price" class="form-control">
-                  <br>
-                  <p>本文</p>
-                  <textarea name="content" class="form-control" rows="30"></textarea>
-                  <br>
-                  <input type="submit" class="btn btn-primary" value="送信">
-              <%end%>
-            <% end %>
             
             <%= form_for(@product, :url => {:controller => :products, :action => :create}) do |f| %>
             
             <%= render 'layouts/error_messages', product: @product %>
-              <div class="col-xs-12 col-md-6">
                 <%= f.label :title %>
                 <%= f.text_field :title, placeholder: "○○字以内", class: 'form-control' %>
                 
@@ -42,7 +26,6 @@
                   <%= f.text_area :content, placeholder: "説明", class: "form-control" %>
                 </div>
                 <%= f.submit "投稿する", class: "btn btn-primary col-xs-12 col-md-offset-3 col-md-6", data: { disable_with: "送信中..." } %>
-                </div>
             <% end %> 
               
         </div>
