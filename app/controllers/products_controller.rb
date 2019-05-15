@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
     @product = Product.find_by(id: params[:id])
     @product.destroy
     flash[:warning] = "削除しました"
-    redirect_to("/products/index")
+    redirect_to products_path
   end
 
   def all_destroy
