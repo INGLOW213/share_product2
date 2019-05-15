@@ -1,20 +1,17 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <%= link_to "Navbar", root_url %>
-    <!--<a class="navbar-brand" href="#">Navbar</a>-->
-    <div class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <%= link_to("プロダクトを投稿","/products/new",class: "nav-link") %>
-            </li>
-            <li class="nav-item">
-                <%= link_to("プロダクト一覧", products_path ,class: "nav-link") %>
-            </li>
-            <li class="nav-item">
-                <%= link_to 'MyPage',college_path(current_college),class: "nav-link" %>
-            </li>
-        </ul>
-    </div>
+
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+		</button>
+		<%= link_to "Navbar", root_url %>
+		<div class="collapse navbar-collapse">
+				<ul class="navbar-nav">
+					<% if college_signed_in? %>
+						<%= render "layouts/after_navbar", college: @college %>
+					<% else %>
+						<%= render "layouts/before_navbar" %>
+					<% end %>
+				</ul>
+		</div>
+
 </nav>
