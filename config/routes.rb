@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'home/top'
   
+  get '/colleges/:id', to: 'colleges#show', as: 'college'
+  get '/users/:id', to: 'users#show', as: 'user'
 
   # get 'products/index'
   # get 'products/new'
