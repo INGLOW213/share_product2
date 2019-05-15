@@ -55,14 +55,14 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
-  def all_destroy
-    @products = Product.all
-    @products.each do |product|
-      product.destroy
-    end
-    flash[:warning] = "すべて削除しました"
-    redirect_to("/products/index")
-  end
+  # def all_destroy
+  #   @products = Product.all
+  #   @products.each do |product|
+  #     product.destroy
+  #   end
+  #   flash[:warning] = "すべて削除しました"
+  #   redirect_to("/products/index")
+  # end
   
   private
     
