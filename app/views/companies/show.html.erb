@@ -1,9 +1,9 @@
 <div class="container">
     <p class="text-center">
-        <%= image_tag avater_url(@company),class: 'text-center'%>
+        <%= image_tag company_avater_url(@company),class: 'text-center'%>
     </p>
     
     <h1 class="text-center"><%= @company.name %>株式会社</h1>
-    <%= link_to "設定"%>
+    <%= link_to "設定", edit_company_registration_path(current_company.id) %>
     <p><%= @company.description %></p>
 </div>

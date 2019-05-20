@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/colleges/:id', to: 'colleges#show', as: 'college'
   get '/companies/:id', to: 'companies#show', as: 'company'
   get '/users/:id', to: 'users#show', as: 'user'
-
+  
   # get 'products/index'
   # get 'products/new'
   # post 'products/create'
