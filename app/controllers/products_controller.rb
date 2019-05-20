@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_college! ,only: [:show, :new, :create ,:update, :destroy, :edit]
+  before_action :authenticate_college!, only: [:new, :create, :edit, :update, :destroy]
+  # before_action :authenticate_company!, only: [:show]
+  before_action :require_current_college, only: [:edit, :update, :destroy]
   protect_from_forgery except: :create
   def index
     @products = Product.all

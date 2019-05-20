@@ -5,7 +5,7 @@
             <!--collegeかcopmpanyどちらかがログインしていれば一覧表示-->
             <% if current_college || current_company %>
               <!--ログイン後-->
-              <%= render "products/products", products: @products%>
+              <%= render "products/products", products: @products %>
             <% else %>
               <!--ログイン前-->
               <%= link_to("大学の方はこちら","/colleges/sign_up", class: "btn btn-primary") %>
