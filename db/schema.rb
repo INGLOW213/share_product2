@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 2019_05_15_074143) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "college_image"
+
     t.string "name", default: "", null: false
+    t.string "college_image"
     t.index ["email"], name: "index_colleges_on_email", unique: true
     t.index ["reset_password_token"], name: "index_colleges_on_reset_password_token", unique: true
   end

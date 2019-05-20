@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/companies/:id', to: 'companies#show', as: 'company'
    get '/companies', to: 'companies#index', as: 'company2'
   get '/users/:id', to: 'users#show', as: 'user'
-
+  
   # get 'products/index'
   # get 'products/new'
   # post 'products/create'
