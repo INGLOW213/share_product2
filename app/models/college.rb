@@ -17,7 +17,11 @@ class College < ApplicationRecord
   end
   
   def unfollow(other_company)
-    relationship = self.relationship.find_by(company_id: other_company.id)
-    self.relationships.destroy if relationship
+    relationship = self.relationships.find_by(company_id: other_company.id)
+    relationship.destroy if relationship
+  end
+  
+  def following?(other_company)
+    self.followings.include?(other_company)
   end
 end
