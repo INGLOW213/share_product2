@@ -1,4 +1,11 @@
-<%= form_for(current_college.relationships.build) do |f|%>
-      <%= hidden_field_tag :company_id, cullent_company.id%>
-      <%= f.submit 'フォローする', class:'btn btn-primary btn-sm'%>
+<%if current_college.following?(company)%>
+      <%= form_for(current_college.relationships.find_by(company_id: company.id), html: { method: :delete }) do |f|%>
+            <%= hidden_field_tag :company_id, company.id%>
+             <%= f.submit 'アンフォローする', class:'btn btn-danger btn-sm'%>
+      <% end %>
+<% else %>
+      <%= form_for(current_college.relationships.build) do |f|%>
+            <%= hidden_field_tag :company_id, company.id%>
+            <%= f.submit 'フォローする', class:'btn btn-primary btn-sm'%>
+      <% end %>
 <% end %>
