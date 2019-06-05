@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   get 'relationship/create'
   get 'relationship/destroy'
   get 'create/destroy'
@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   
   resources :products do
     resources :pictures, only: [:create]
+    
+    resources :likes,  only: [:create, :destroy]
   end
   
   resources :relationships, only: [:create, :destroy]

@@ -67,3 +67,4 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'carrierwave'
 gem 'rails-i18n'
+gem "font-awesome-rails"
