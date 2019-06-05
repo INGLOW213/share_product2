@@ -5,7 +5,14 @@
             <!--collegeかcopmpanyどちらかがログインしていれば一覧表示-->
             <% if current_college || current_company %>
               <!--ログイン後-->
-              <%= render "products/products", products: @products %>
+                <% if params[:q_products] %>
+                    <%= render "products/products", products: @result_products %>
+                <% elsif params[:q_colleges] %>  
+                    <%= render "colleges/colleges", colleges: @result_colleges %>
+                <% elsif params[:q_companies] %>
+                    <%= render "companies/companies", companies: @result_companies %>
+                <% end %>
+              </div>
             <% else %>
               <!--ログイン前-->
               <%= link_to("大学の方はこちら","/colleges/sign_up", class: "btn btn-primary") %>

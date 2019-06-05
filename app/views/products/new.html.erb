@@ -10,14 +10,13 @@
                 <%= f.label :title %>
                 <%= f.text_field :title, placeholder: "○○字以内", class: 'form-control' %>
                 
-                <% if false %>
                 <div class="form-group">
-                  <%= f.fields_for :pictures do |picture| %>
-                    <%= picture.file_field :image_url, multiple: true %>
+                  <!--picturesテーブル内のimageカラムに影響させることを指定-->
+                  <%= f.fields_for :pictures, @product.pictures do |picture| %>
+                    <%= picture.file_field :image, multiple: true %>
                   <% end %>  
                 </div>  
-                <% end %>
-          
+                
                 <%= f.label :price %>
                 <%= f.text_field :price, class: 'form-control' %>
                 

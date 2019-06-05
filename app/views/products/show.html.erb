@@ -5,11 +5,11 @@
             <%= link_to @product.college.name, college_path(@product.college.id)%>
             <h2><%= @product.title %></h2>
             <p class="text-danger">￥<%= @product.price %></p>
-            
-        <% if  @product.college == current_college %>    
-            <%= link_to("編集","/products/#{@product.id}/edit") %>
-            <%= link_to("削除",@product,{method: "delete"}) %>
-        <% end %>  
+            <%#= image_tag @product.pictures.image.url %>
+            <% if  @product.college == current_college %>
+                <%= link_to("編集","/products/#{@product.id}/edit") %>
+                <%= link_to("削除",@product,{method: "delete"}) %>
+            <% end %>  
             <br><br>
             <p><%= @product.content %></p>
         </div>
