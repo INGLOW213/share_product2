@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2019_05_15_074143) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
     t.string "name", default: "", null: false
     t.string "college_image"
     t.index ["email"], name: "index_colleges_on_email", unique: true

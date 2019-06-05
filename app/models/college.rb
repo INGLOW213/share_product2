@@ -4,10 +4,14 @@ class College < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :products
-  has_many :pictures
+  # has_many :pictures, inverse_of: :college
   has_many :relationships
  
   has_many :followings , through: :relationships, source: :company
+  
+  # scope :search_by_keyword, -> (keyword) {
+  #   where("colleges.name LIKE :keyword", keyword: "%#{sanitize_sql_like(keyword)}%") if keyword.present?
+  # }
  
   
   def follow(other_company)

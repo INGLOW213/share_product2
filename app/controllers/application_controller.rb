@@ -1,10 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
+  before_action :set_global_search_variable
   before_action :college_params, if: :devise_controller?
   before_action :company_params, if: :devise_controller?
   
   add_flash_types :success, :info, :warning, :danger
+  
+  # 検索はどこのページからでもしたいので、applicationコントローラ内に定義
+  def set_global_search_variable
+    @q_products = Product.ransack(params[:q_products], search_key: :q_products)
+    @q_colleges = College.ransack(params[:q_colleges], search_key: :q_colleges)
+    @q_companies = Company.ransack(params[:q_companies], search_key: :q_companies)
+  end
   
   private
     

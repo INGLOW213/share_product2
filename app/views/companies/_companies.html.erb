@@ -1,0 +1,4 @@
+<% companies.each do |company| %>
+  <%= image_tag company_avater_url(company),class: 'text-center'%>
+  <%= link_to company.name,company_path(company)%>
+<% end %>
