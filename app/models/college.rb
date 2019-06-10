@@ -4,6 +4,7 @@ class College < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :products
+  has_many :likes
   # has_many :pictures, inverse_of: :college
   has_many :relationships
  
