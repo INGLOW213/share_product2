@@ -1,0 +1,4 @@
+<% colleges.each do |college| %>
+  <%= image_tag college_avater_url(college),class: 'text-center'%>
+  <%= link_to college.name,college_path(college)%>
+<% end %>

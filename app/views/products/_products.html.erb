@@ -5,8 +5,8 @@
           <div class="card-body">
               <!--<h2 class="card-title"><%#= link_to product.college_id, college_path(product.college_id)  %></h2>-->
               <%= image_tag college_avater_url(product.college),class: 'text-center'%>
-              <h2 class="card-title"><%= product.title %></h2>
-              <p class="card-text"><%= product.content %></p>
+              <h2 class="card-title">タイトル：<%= product.title %></h2>
+              <p class="card-text">概要：<%= product.content %></p>
               <p class="card-text">￥<%= product.price %></p>
           </div>
       </div>

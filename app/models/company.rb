@@ -8,6 +8,9 @@ class Company < ApplicationRecord
   has_many :followings , through: :relationships, source: :college
   
  
+# scope :search_by_keyword, -> (keyword) {
+#     where("companies.name LIKE :keyword", keyword: "%#{sanitize_sql_like(keyword)}%") if keyword.present?
+#   }
   
   def follow(other_college)
     unless self == other_college

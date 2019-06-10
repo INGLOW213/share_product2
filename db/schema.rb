@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_22_082606) do
+ActiveRecord::Schema.define(version: 2019_06_10_080616) do
 
   create_table "colleges", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2019_05_22_082606) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "college_id"
+    t.integer "likes_count", default: 0, null: false
     t.index ["college_id"], name: "index_products_on_college_id"
   end
 

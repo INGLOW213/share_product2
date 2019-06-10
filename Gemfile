@@ -68,3 +68,6 @@ gem 'devise'
 gem 'carrierwave'
 gem 'rails-i18n'
 gem "font-awesome-rails"
+gem 'ransack'
+
+gem 'counter_culture'

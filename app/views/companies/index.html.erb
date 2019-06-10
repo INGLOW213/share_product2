@@ -1,5 +1,3 @@
 <p>
-    <% @companies.each do |company| %>
-      <%= link_to company.name,company_path(current_college)%>
-    <% end %>
+  <%= render "companies", companies: @companies %>
 </p>

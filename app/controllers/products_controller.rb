@@ -9,8 +9,8 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    # 3.times { @product.pictures.build }
-    @product.pictures.build
+    3.times { @product.pictures.build }
+    # @product.pictures.build
   end
 
   def create
@@ -31,10 +31,6 @@ class ProductsController < ApplicationController
   
   def update
     @product = Product.find_by(id: params[:id])
-    # @product.title = params[:title]
-    # @product.content = params[:content]
-    # @product.price = params[:price].to_i
-    # @product.save
     if @product.update(product_params)
       flash[:success] = "保存しました"
       redirect_to products_path
@@ -67,7 +63,8 @@ class ProductsController < ApplicationController
   private
     
     def product_params
-      params.require(:product).permit(:title, :content, :price, {image_url: []})
+      params.require(:product).permit(:title, :content, :price, pictures_attributes: [:id, :product_id, image: []])
+      # params.require(:product).permit(:title, :content, :price, pictures_attributes: [:image])
     end
   
   

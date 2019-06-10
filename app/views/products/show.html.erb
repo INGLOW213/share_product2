@@ -5,6 +5,11 @@
             <%= link_to @product.college.name, college_path(@product.college.id)%>
             <h2><%= @product.title %></h2>
             <p class="text-danger">￥<%= @product.price %></p>
+            <%#= image_tag @product.pictures.image.url %>
+            <% if  @product.college == current_college %>
+                <%= link_to("編集","/products/#{@product.id}/edit") %>
+                <%= link_to("削除",@product,{method: "delete"}) %>
+            <% end %>  
             <% if current_company.present? %>
               <div id="like-icon-post-<%= @product.id.to_s %>">
                   <% if @product.liked_by(current_company).present?%>
@@ -13,6 +18,7 @@
                   <%= link_to "",product_likes_path(@product),method: :POST, class: "fa fa-2x fa-heart-o"%>
                   <% end %>
               </div>
+              <%= @product.likes_count%>
             <% end %>
             
 
