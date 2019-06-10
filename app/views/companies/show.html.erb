@@ -12,7 +12,8 @@
     <% end %>  
     <p><%= @company.description %></p>
     
- <% unless current_company == @comoany %>
-    <%= render 'relationship/follow_button',company: @company %>
-    <% end %>
+        <% unless current_company %>
+        <%= render 'relationship/follow_button',company: @company %>
+        <% end %>
+    
 </div>

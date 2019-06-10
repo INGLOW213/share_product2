@@ -4,8 +4,10 @@
     </p>
     
     <h1 class="text-center"><%= @college.name %>大学</h1>
-    <% unless current_college == @college %>
-    <%= render 'relationship/follow_button',college: @college %>
-    <% end %>
+   
+      <% unless current_college %>
+      <%= render 'relationship/follow_button',college: @college %>
+      <% end %>
+    
 </div>
 

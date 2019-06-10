@@ -8,6 +8,10 @@ class Product < ApplicationRecord
         Like.find_by(company_id: company.id,product_id: id)
     end
   
+    def like_by(college)
+        Like.find_by(college_id: college.id,product_id: id)
+    end
+  
         
   
   # バリデーション

@@ -1,7 +1,7 @@
 class RelationshipsController < ApplicationController
   def create
     @company = Company.find_by(id: params[:company_id])
-    @college =College.find_by(id: params[:college_id])
+    @college = College.find_by(id: params[:college_id])
 
         if @college == nil
          current_college.follow(@company)
@@ -24,9 +24,7 @@ class RelationshipsController < ApplicationController
     if @college == nil
      current_college.unfollow(@company)
      flash[:notice]='アンフォローしました'
-      respond_to do |format|
          redirect_to @company
-           end
     end
     
     if  @company == nil 
