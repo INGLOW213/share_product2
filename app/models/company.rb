@@ -3,8 +3,10 @@ class Company < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :likes
   has_many :relationships
-  has_many :followings , through: :relationships
+  has_many :followings , through: :relationships, source: :college
+  
  
 # scope :search_by_keyword, -> (keyword) {
 #     where("companies.name LIKE :keyword", keyword: "%#{sanitize_sql_like(keyword)}%") if keyword.present?
@@ -17,7 +19,13 @@ class Company < ApplicationRecord
   end
   
   def unfollow(other_college)
-    relationship = self.relationship.find_by(college_id: other_college.id)
-    self.relationships.destroy if relationship
+    relationship = self.relationships.find_by(college_id: other_college.id)
+    relationship.destroy if relationship
   end
+  
+   def following?(other_college)
+    self.followings.include?(other_college)
+   end
+   
+   
 end

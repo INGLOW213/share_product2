@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   get 'relationship/create'
   get 'relationship/destroy'
   get 'create/destroy'
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   # post 'products/:id/destroy' => 'products#destroy'
   
   resources :products do
-    
+    resources :likes,  only: [:create, :destroy]
     resources :pictures, only: [:create]
     
     collection do

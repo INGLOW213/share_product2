@@ -10,6 +10,22 @@
                 <%= link_to("編集","/products/#{@product.id}/edit") %>
                 <%= link_to("削除",@product,{method: "delete"}) %>
             <% end %>  
+            <% if current_company.present? %>
+              <div id="like-icon-post-<%= @product.id.to_s %>">
+                  <% if @product.liked_by(current_company).present?%>
+                    <%= link_to "",product_like_path(@product.id, @product.liked_by(current_company)),method: :DELETE, class: "fa fa-2x fa-heart"%>
+                      <% else %>
+                  <%= link_to "",product_likes_path(@product),method: :POST, class: "fa fa-2x fa-heart-o"%>
+                  <% end %>
+              </div>
+              <%= @product.likes_count%>
+            <% end %>
+            
+
+        <% if  @product.college == current_college %>    
+            <%= link_to("編集","/products/#{@product.id}/edit") %>
+            <%= link_to("削除",@product,{method: "delete"}) %>
+        <% end %>  
             <br><br>
             <p><%= @product.content %></p>
         </div>

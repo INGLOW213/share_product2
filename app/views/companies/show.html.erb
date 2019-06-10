@@ -3,9 +3,16 @@
       <%= image_tag company_avater_url(@company),class: 'text-center'%>
     </p>
     <h1 class="text-center"><%= @company.name %>株式会社</h1>
+
+    <% if current_company == @company %>
+     <% link_to "設定", edit_company_registration_path(current_company.id) %>
+    <% end %>
     <% if @company == current_company %>
       <%= link_to "設定", edit_company_registration_path(current_company.id) %>
     <% end %>  
     <p><%= @company.description %></p>
+    
+ <% unless current_company == @comoany %>
     <%= render 'relationship/follow_button',company: @company %>
+    <% end %>
 </div>
