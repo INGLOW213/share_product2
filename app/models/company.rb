@@ -5,6 +5,7 @@ class Company < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :relationships
   has_many :followings , through: :relationships
+  has_many :comments
  
 # scope :search_by_keyword, -> (keyword) {
 #     where("companies.name LIKE :keyword", keyword: "%#{sanitize_sql_like(keyword)}%") if keyword.present?

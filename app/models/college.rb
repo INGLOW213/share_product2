@@ -6,7 +6,7 @@ class College < ApplicationRecord
   has_many :products
   # has_many :pictures, inverse_of: :college
   has_many :relationships
- 
+  has_many :comments
   has_many :followings , through: :relationships, source: :company
   
   # scope :search_by_keyword, -> (keyword) {

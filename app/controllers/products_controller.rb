@@ -42,6 +42,8 @@ class ProductsController < ApplicationController
   
   def show
     @product = Product.find_by(id: params[:id])
+    @comments = @product.comments
+    @comment = Comment.new
   end
   
   def destroy

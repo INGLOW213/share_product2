@@ -20,23 +20,23 @@ class HomeController < ApplicationController
     
     unless params[:q_products].blank?
       @q_products = Product.search(product_search_params)
-      @result_products = @q_products.result
+      @result_products = @q_products.result.paginate(page: params[:page], per_page: 10)
     else
-      @result_products = Product.all
+      @result_products = Product.all.paginate(page: params[:page], per_page: 10)
     end
     
     unless params[:q_colleges].blank?
       @q_colleges = College.search(college_search_params)
-      @result_colleges = @q_colleges.result
+      @result_colleges = @q_colleges.result.paginate(page: params[:page], per_page: 10)
     else
-      @result_colleges = College.all
+      @result_colleges = College.all.paginate(page: params[:page], per_page: 10)
     end
     
     unless params[:q_companies].blank?
       @q_companies = Company.search(company_search_params)
-      @result_companies = @q_companies.result
+      @result_companies = @q_companies.result.paginate(page: params[:page], per_page: 10)
     else
-      @result_companies = Company.all
+      @result_companies = Company.all.paginate(page: params[:page], per_page: 10)
     end
     
   end

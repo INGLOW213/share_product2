@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_15_074143) do
+ActiveRecord::Schema.define(version: 2019_06_10_073445) do
 
   create_table "colleges", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,6 +24,19 @@ ActiveRecord::Schema.define(version: 2019_05_15_074143) do
     t.string "college_image"
     t.index ["email"], name: "index_colleges_on_email", unique: true
     t.index ["reset_password_token"], name: "index_colleges_on_reset_password_token", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "college_id"
+    t.integer "company_id"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["college_id", "company_id", "product_id"], name: "index_comments_on_college_id_and_company_id_and_product_id"
+    t.index ["college_id"], name: "index_comments_on_college_id"
+    t.index ["company_id"], name: "index_comments_on_company_id"
+    t.index ["product_id"], name: "index_comments_on_product_id"
   end
 
   create_table "companies", force: :cascade do |t|
