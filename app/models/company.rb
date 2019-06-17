@@ -7,6 +7,8 @@ class Company < ApplicationRecord
   has_many :relationships
   has_many :followings , through: :relationships, source: :college
   
+  has_many :followings , through: :relationships
+  has_many :comments
  
 # scope :search_by_keyword, -> (keyword) {
 #     where("companies.name LIKE :keyword", keyword: "%#{sanitize_sql_like(keyword)}%") if keyword.present?

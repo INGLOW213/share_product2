@@ -31,6 +31,43 @@
             <% end %> 
               <%= @product.likes_count%>
             <p><%= @product.content %></p>
+<<<<<<< HEAD
       </div>
+=======
+            
+            <!--ここからコメント-->
+            <%= form_for [@product, @comment] do |f| %>
+                <% if @comment.errors.any? %>
+                    <div id="error_explanation">
+                      <ul>
+                        <% @comment.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>  
+              <%= f.text_area :content %>
+              <br>
+              <%= f.submit 'コメントする' %>
+            <% end %>
+            <ul class="comments">    
+            <li>
+                <% @comments.each do |comment| %>
+                
+                    <% if comment.college %>
+                    <div class="college_comment" >
+                        <%= link_to comment.college.name, college_path(comment.college_id) %>
+                    </div>    
+                    <% elsif comment.company %>
+                    <div class="company_comment">
+                        <%= link_to comment.company.name, company_path(comment.company_id) %>
+                    </div>    
+                    <% end %>
+                    <%= comment.content %>
+                <% end %>
+            </li>    
+            </ul>
+        </div>
+>>>>>>> 78d443d2b723e34ffef372b128b14fdd80cb5873
     </div>
 </div>
