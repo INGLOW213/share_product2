@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   
   get '/colleges/:id', to: 'colleges#show', as: 'college'
   get '/companies/:id', to: 'companies#show', as: 'company'
-   get '/companies', to: 'companies#index', as: 'company2'
+  get '/companies', to: 'companies#index', as: 'company2'
   get '/users/:id', to: 'users#show', as: 'user'
   
   # get 'products/index'
@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   
   resources :products do
     resources :likes,  only: [:create, :destroy]
+    
+    resources :comments, only: [:create]
     resources :pictures, only: [:create]
     
     collection do

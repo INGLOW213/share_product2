@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
-
+  
+  has_many :comments
   has_many :pictures
   belongs_to :college
   has_many :likes, -> { order(created_at: desc) },dependent: :destroy

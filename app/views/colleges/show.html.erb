@@ -6,7 +6,9 @@
     <h1 class="text-center"><%= @college.name %>大学</h1>
    
       <% unless current_college %>
-      <%= render 'relationship/follow_button',college: @college %>
+         <div id="follow">
+          <%= render 'relationships/follow_button',college: @college %>
+         </div>
       <% end %>
     
 </div>

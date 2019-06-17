@@ -6,11 +6,17 @@
             <% if current_college || current_company %>
               <!--ログイン後-->
                 <% if params[:q_products] %>
-                    <%= render "products/products", products: @result_products %>
+                  <%= render "products/products", products: @result_products %>
+                  <%= will_paginate @result_products, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
                 <% elsif params[:q_colleges] %>  
-                    <%= render "colleges/colleges", colleges: @result_colleges %>
+                  <%= render "colleges/colleges", colleges: @result_colleges %>
+                  <%= will_paginate @result_colleges, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
                 <% elsif params[:q_companies] %>
-                    <%= render "companies/companies", companies: @result_companies %>
+                  <%= render "companies/companies", companies: @result_companies %>
+                  <%= will_paginate @result_companies, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+                <% else %>
+                  <%= render "products/products", products: @result_products %>
+                  <%= will_paginate @result_products, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
                 <% end %>
               </div>
             <% else %>

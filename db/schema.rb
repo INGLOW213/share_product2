@@ -26,6 +26,19 @@ ActiveRecord::Schema.define(version: 2019_06_10_101648) do
     t.index ["reset_password_token"], name: "index_colleges_on_reset_password_token", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "college_id"
+    t.integer "company_id"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["college_id", "company_id", "product_id"], name: "index_comments_on_college_id_and_company_id_and_product_id"
+    t.index ["college_id"], name: "index_comments_on_college_id"
+    t.index ["company_id"], name: "index_comments_on_company_id"
+    t.index ["product_id"], name: "index_comments_on_product_id"
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
