@@ -1,9 +1,10 @@
 <div class="container">
-    <div class="row">
-        <div class="offset-md-2 col-md-8">
+        <div class="offset-md-3 col-md-6">
+             <div class="card">
+            <div class="card-header"><h2><%= @product.title %></h2></div>
+            <div class="card-body">
             <br><br>
             <%= link_to @product.college.name, college_path(@product.college.id)%>
-            <h2><%= @product.title %></h2>
             <p class="text-danger">￥<%= @product.price %></p>
             <%#= image_tag @product.pictures.image.url %>
             <% if  @product.college == current_college %>
@@ -30,6 +31,6 @@
             <% end %> 
               <%= @product.likes_count%>
             <p><%= @product.content %></p>
-        </div>
+      </div>
     </div>
 </div>

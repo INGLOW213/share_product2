@@ -6,14 +6,19 @@ class RelationshipsController < ApplicationController
         if @college == nil
          current_college.follow(@company)
          flash[:notice]='フォローしました'
-           redirect_to @company 
+           respond_to do |format|
+            format.html { redirect_to @company }
+            format.js
+           end
         end
         
         if  @company == nil
          current_company.follow(@college)
          flash[:notice]='フォローしました'
-          redirect_to @college
-           
+           respond_to do |format|
+            format.html { redirect_to @college }
+            format.js
+           end
         end
   end
 
@@ -24,13 +29,19 @@ class RelationshipsController < ApplicationController
     if @college == nil
      current_college.unfollow(@company)
      flash[:notice]='アンフォローしました'
-         redirect_to @company
+         respond_to do |format|
+            format.html { redirect_to @company }
+            format.js
+           end
     end
     
     if  @company == nil 
          current_company.unfollow(@college)
          flash[:notice]='アンフォローしました'
-          redirect_to @college 
+         respond_to do |format|
+            format.html { redirect_to @college }
+            format.js
+           end
     end
   end
 end

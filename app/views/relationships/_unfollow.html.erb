@@ -1,0 +1,4 @@
+<%= form_for(current_college.relationships.find_by(company_id: @company.id), html: { method: :delete },remote: true) do |f|%>
+    <%= hidden_field_tag :company_id, @company.id%>
+    <%= f.submit 'アンフォローする', class:'btn btn-danger btn-sm'%>
+<% end %>

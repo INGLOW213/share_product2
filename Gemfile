@@ -69,5 +69,5 @@ gem 'carrierwave'
 gem 'rails-i18n'
 gem "font-awesome-rails"
 gem 'ransack'
-
+gem 'rails-ujs'
 gem 'counter_culture'
