@@ -9,7 +9,7 @@
             <% if  @product.college == current_college %>
                 <%= link_to("編集","/products/#{@product.id}/edit") %>
                 <%= link_to("削除",@product,{method: "delete"}) %>
-            <% end %>  
+            <% end %>
             <br><br>
             <p><%= @product.content %></p>
             
@@ -23,12 +23,12 @@
                         <% end %>
                       </ul>
                     </div>
-                <% end %>  
+                <% end %>
               <%= f.text_area :content %>
               <br>
               <%= f.submit 'コメントする' %>
             <% end %>
-            <ul class="comments">    
+            <ul class="comments">
             <li>
                 <% @comments.each do |comment| %>
                 
