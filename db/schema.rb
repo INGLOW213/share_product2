@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_073445) do
+ActiveRecord::Schema.define(version: 2019_06_10_101648) do
 
   create_table "colleges", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2019_06_10_073445) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name", default: "", null: false
     t.string "college_image"
+    t.string "name", default: "", null: false
     t.index ["email"], name: "index_colleges_on_email", unique: true
     t.index ["reset_password_token"], name: "index_colleges_on_reset_password_token", unique: true
   end
@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(version: 2019_06_10_073445) do
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "college_id"
+    t.index ["product_id"], name: "index_likes_on_product_id"
+  end
+
   create_table "pictures", force: :cascade do |t|
     t.string "image"
     t.integer "post_id"
@@ -81,6 +90,7 @@ ActiveRecord::Schema.define(version: 2019_06_10_073445) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "college_id"
+    t.integer "likes_count", default: 0, null: false
     t.index ["college_id"], name: "index_products_on_college_id"
   end
 

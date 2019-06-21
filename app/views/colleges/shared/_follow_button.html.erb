@@ -1,0 +1,13 @@
+<% if current_college %> 
+            <%if current_college.following?(company)%>
+                  <%= render 'colleges/shared/unfollow',company: company %>
+            <% else %>
+                  <%= render 'relationships/shared/follow',company: company %>
+            <% end %>
+      <% else %>
+            <%if current_company.following?(college)%>
+                  <%= render 'relationships/shared/unfollow2',college: college %>
+            <% else %>
+                  <%= render 'relationships/shared/follow2',college: college %>
+            <% end %>
+      <% end %>

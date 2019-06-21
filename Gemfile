@@ -67,7 +67,11 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'carrierwave'
 gem 'rails-i18n'
+gem "font-awesome-rails"
+gem 'rails-ujs'
+gem 'counter_culture'
 gem 'ransack'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'bootstrap-sass'
+
