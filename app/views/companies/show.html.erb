@@ -2,13 +2,16 @@
     <p class="text-center">  
       <%= image_tag company_avater_url(@company),class: 'text-center'%>
     </p>
-    <h1 class="text-center"><%= @company.name %>株式会社</h1>
+    <h1 class="text-center"><%= @company.name %>会社</h1>
 
     <% if current_company == @company %>
-     <% link_to "設定", edit_company_registration_path(current_company.id) %>
-    <% end %>
-    <% if @company == current_company %>
-      <%= link_to "設定", edit_company_registration_path(current_company.id) %>
+      <div class="match_product">
+        <h3>リクエスト送信済み投稿</h2>
+        <% @match_product.each do |match_product| %>
+          <%= link_to match_product.title, product_path(match_product.id) %>
+        <% end %>
+      </div>  
+      <%= link_to "プロフィール設定", edit_company_registration_path(current_company.id) %>
     <% end %>  
     <p><%= @company.description %></p>
     

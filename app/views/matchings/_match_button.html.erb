@@ -1,0 +1,10 @@
+<% if current_company %>
+  <% unless current_company.matching?(product)%>
+    <%= form_for(current_company.matchings.build) do |f|%>
+      <%= hidden_field_tag :matching_product_id, product.id%>
+      <%= f.submit "相談申し込み", class:'btn btn-primary btn-sm'%>
+    <% end %>
+  <% else %>
+    <%= link_to "ご相談済みです", "#", class: 'btn btn-default' %>
+  <% end %>
+<% end %>      

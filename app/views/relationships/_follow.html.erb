@@ -1,5 +1,5 @@
 <%= form_for(current_college.relationships.build,remote: true) do |f|%>
-    <%= hidden_field_tag :company_id, @company.id%>
+    <%= hidden_field_tag :company_id, @company.id %>
     <%= f.submit 'フォローする', class:'btn btn-primary btn-sm'%>
 <% end %>
 
