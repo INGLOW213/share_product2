@@ -2,6 +2,9 @@ class Product < ApplicationRecord
   
   has_many :comments
   has_many :pictures
+  # マッチングリレーション
+  has_many :matchings
+  has_many :matching_companies, through: :matchings, source: :company
   belongs_to :college
   has_many :likes, -> { order(created_at: desc) },dependent: :destroy
   

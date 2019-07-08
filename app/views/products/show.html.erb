@@ -1,16 +1,18 @@
+<h5><%= @product.title %>の詳細ページ<h5>
 <div class="container">
-        <div class="offset-md-3 col-md-6">
-             <div class="card">
-            <div class="card-header"><h2><%= @product.title %></h2></div>
-            <div class="card-body">
-            <br><br>
-            <%= link_to @product.college.name, college_path(@product.college.id)%>
-            <p class="text-danger">￥<%= @product.price %></p>
-            <%#= image_tag @product.pictures.image.url %>
-            <% if  @product.college == current_college %>
-                <%= link_to("編集","/products/#{@product.id}/edit") %>
-                <%= link_to("削除",@product,{method: "delete"}) %>
-            <% end %>  
+  <div class="offset-md-3 col-md-6">
+     <div class="card">
+        <div class="card-header"><h2><%= @product.title %></h2></div>
+        <div class="card-body">
+          <%= link_to @product.college.name, college_path(@product.college.id)%>
+          <%= render "matchings/match_button", product: @product %>
+          <p class="text-danger">￥<%= @product.price %></p>
+          <%#= image_tag @product.pictures.image.url %>
+          <% if  @product.college == current_college %>
+            <%= link_to("編集","/products/#{@product.id}/edit") %>
+            <%= link_to("削除",@product,{method: "delete"}) %>
+          <% end %>
+          <br><br>
             <% if current_company.present? %>
               <div id="like-icon-post-<%= @product.id.to_s %>">
                   <% if @product.liked_by(current_company).present?%>
@@ -30,10 +32,11 @@
               </div>
             <% end %> 
               <%= @product.likes_count%>
-            <p><%= @product.content %></p>
-<<<<<<< HEAD
+            <div class="product-content">
+              <p>投稿内容</p>  
+              <p><%= @product.content %></p>
+            </div>
       </div>
-=======
             
             <!--ここからコメント-->
             <%= form_for [@product, @comment] do |f| %>
@@ -45,12 +48,12 @@
                         <% end %>
                       </ul>
                     </div>
-                <% end %>  
+                <% end %>
               <%= f.text_area :content %>
               <br>
               <%= f.submit 'コメントする' %>
             <% end %>
-            <ul class="comments">    
+            <ul class="comments">
             <li>
                 <% @comments.each do |comment| %>
                 
@@ -67,7 +70,5 @@
                 <% end %>
             </li>    
             </ul>
-        </div>
->>>>>>> 78d443d2b723e34ffef372b128b14fdd80cb5873
     </div>
 </div>

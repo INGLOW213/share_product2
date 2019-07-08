@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_101648) do
+ActiveRecord::Schema.define(version: 2019_06_26_072537) do
 
   create_table "colleges", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2019_06_10_101648) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "college_image"
     t.string "name", default: "", null: false
+    t.string "college_image"
     t.index ["email"], name: "index_colleges_on_email", unique: true
     t.index ["reset_password_token"], name: "index_colleges_on_reset_password_token", unique: true
   end
@@ -61,6 +61,16 @@ ActiveRecord::Schema.define(version: 2019_06_10_101648) do
     t.datetime "updated_at", null: false
     t.integer "college_id"
     t.index ["product_id"], name: "index_likes_on_product_id"
+  end
+
+  create_table "matchings", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_matchings_on_company_id"
+    t.index ["product_id", "company_id"], name: "index_matchings_on_product_id_and_company_id", unique: true
+    t.index ["product_id"], name: "index_matchings_on_product_id"
   end
 
   create_table "pictures", force: :cascade do |t|

@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   get '/companies/:id', to: 'companies#show', as: 'company'
   get '/companies', to: 'companies#index', as: 'company2'
   get '/users/:id', to: 'users#show', as: 'user'
-  
   # get 'products/index'
   # get 'products/new'
   # post 'products/create'
@@ -30,6 +29,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
     resources :pictures, only: [:create]
     
+    member do
+      get :matching_products
+    end
+    
     collection do
       match 'search' => 'home#search', via: [:get, :post], as: :search
     end
@@ -42,12 +45,16 @@ Rails.application.routes.draw do
   end
   
   resources :companies do
+     member do
+      get :matching_companies
+    end
     collection do
       match 'search' => 'home#search', via: [:get, :post], as: :search
     end
   end
   
   resources :relationships, only: [:create, :destroy]
+  resources :matchings, only: [:create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   

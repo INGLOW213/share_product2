@@ -6,10 +6,9 @@ class College < ApplicationRecord
   has_many :products
   has_many :likes
   # has_many :pictures, inverse_of: :college
+  has_many :followings , through: :relationships, source: :company
   has_many :relationships
   has_many :comments
-  has_many :followings , through: :relationships, source: :company
-  
   # scope :search_by_keyword, -> (keyword) {
   #   where("colleges.name LIKE :keyword", keyword: "%#{sanitize_sql_like(keyword)}%") if keyword.present?
   # }
